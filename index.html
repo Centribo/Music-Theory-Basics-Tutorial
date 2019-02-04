@@ -53,6 +53,7 @@
 						<li>Scales</li>
 						<li>Chord Progressions</li>
 						<li>Bonus: Modes</li>
+						<li>Bonus: How Do We Tune Our Instruments?</li>
 					</ul>
 				</section>
 
@@ -171,22 +172,73 @@
 							<h2 style="text-transform: none;">A Sin(Ft)</h2>
 							
 							<canvas id="canvas_2" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
-							<br>F = <b id="frequency_value"></b><input id="frequency_slider" type="range" min="0" max="10" value="1">
+							<br>F = <b id="frequency_value"></b><input id="frequency_slider" type="range" min="220" max="880" value="440">
 							<br>A = <b id="amplitude_value"></b><input id="amplitude_slider" type="range" min="0" max="10" value="1">
-
+							<br><button onclick="toggleOscillatorAudio()">Play/Stop</button>
+							<select id="oscillator_type_selector">
+								<option value="sine">Sine</option>
+								<option value="square">Square</option>
+								<option value="sawtooth">Sawtooth</option>
+								<option value="triangle">Triangle</option>
+							</select>
+							
 							<script type="text/javascript">
 								var frequencySlider = document.getElementById("frequency_slider");
 								var frequencyValue = document.getElementById("frequency_value");
 								var amplitudeValue = document.getElementById("amplitude_value");
 								var amplitudeSlider = document.getElementById("amplitude_slider");
+								var oscillatorTypeSelector = document.getElementById("oscillator_type_selector");
 								var canvas2 = document.getElementById("canvas_2");
 								var quickplot2 = new QuickPlot(canvas2);
 								var halfRange = 10;
 								var halfDomain = 10;
-								
 								var offset = 0;
+								
+								var audioCtx;
+								var o;
+								var g;
+
+								function toggleOscillatorAudio(){
+									if(audioCtx){
+										o.stop();
+										// g.close();
+										audioCtx.close();
+										audioCtx = null;
+									} else {
+										audioCtx = new AudioContext();
+										o = audioCtx.createOscillator();
+										g = audioCtx.createGain();
+										o.type = oscillatorTypeSelector.value;
+										g.gain.value = 0.1;
+										g.connect(audioCtx.destination);
+										o.connect(g);
+										o.start();
+									}
+								}
 	
-								quickplot2.setFunction(function(x){return amplitudeSlider.value * Math.sin((x + offset) * frequencySlider.value)});
+								quickplot2.setFunction(function(x){
+									var freq = frequencySlider.value/220;
+									var finalX = (x + offset) * freq;
+
+									switch(oscillatorTypeSelector.value){
+										case "triangle":
+										// TODO: FILL IN THIS FUNCTION
+										// return Math.abs(finalX/32 % frequencySlider.value);
+										
+										case "sine":
+											return amplitudeSlider.value * Math.sin(finalX);
+										break;
+										case "square":
+											return amplitudeSlider.value * Math.pow(-1, Math.floor(finalX/4));
+										break;
+										case "sawtooth":
+											return (amplitudeSlider.value*2 * ((finalX/8) - Math.floor(finalX/8))) - amplitudeSlider.value;
+										break;
+										default:
+											return x;
+										break;
+									}
+								});
 								quickplot2.setGraphDomain(-halfDomain, halfDomain);
 								quickplot2.setGraphRange(-halfRange, halfRange);
 	
@@ -198,8 +250,13 @@
 									time2 = now;
 									
 									offset += dt * Math.PI;
-									quickplot2.drawGraph();
 
+									quickplot2.drawGraph();
+									if(audioCtx){
+										g.gain.value = amplitudeSlider.value/10;
+										o.frequency.value = frequencySlider.value
+									}
+									
 									frequencyValue.innerText = frequencySlider.value;
 									amplitudeValue.innerText = amplitudeSlider.value;
 								}
@@ -208,6 +265,18 @@
 							</script>
 					</section>
 
+					<section>
+						<blockquote>Humans can generally hear between ~20Hz to ~20, 000Hz (20kHz). <br>(<a href="https://en.wikipedia.org/wiki/Hearing_range">Wikipedia</a>)</blockquote>
+						<blockquote>Most modern instruments are tuned with middle A = 440hz. <br>(<a href="https://www.iso.org/standard/3601.html">International Organization for Standardization</a>)</blockquote>
+					</section>
+
+				</section>
+
+				<!-- The 13 Intervals of Western Music -->
+				<section>
+					<section>
+						<h1>The 13 Intervals of Western Music™</h1>
+					</section>
 				</section>
 			
 			</div>
