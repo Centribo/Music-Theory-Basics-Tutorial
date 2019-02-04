@@ -5,4 +5,5 @@ To view the presentation slides, clone or down the repository. Open index.html i
 
 ## Acknowledgements
 
-* [reveal.js](https://github.com/hakimel/reveal.js) by [Hakim El Hattab](https://hakim.se/) (under [MIT license](https://github.com/hakimel/reveal.js/blob/master/LICENSE))
+* [reveal.js](https://github.com/hakimel/reveal.js) by [Hakim El Hattab](https://hakim.se/) under [MIT](https://github.com/hakimel/reveal.js/blob/master/LICENSE)
+* [QuickPlotJS](https://github.com/d12/QuickPlotJS) by [Nathaniel Woodthorpe](http://nwoodthorpe.com/) under [MIT](https://github.com/d12/QuickPlotJS/blob/master/LICENSE.txt)

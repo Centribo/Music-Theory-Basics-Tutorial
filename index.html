@@ -6,8 +6,8 @@
 
 		<title>Music Theory 101</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/centribo_orange.css">
+		<link rel="stylesheet" type="text/css" href="css/reveal.css">
+		<link rel="stylesheet" type="text/css" href="css/theme/centribo_orange.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -20,6 +20,10 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<!-- QuickPlotJS -->
+		<script type="text/javascript" src="js/quickplotmini.js"></script>
+
 	</head>
 	<body>
 		<!-- SLIDES -->
@@ -110,6 +114,100 @@
 							Takeaway:
 							<blockquote>What you hear and how you listen affects your subjective experience of music. Emotional and physical context come together with other factors to contirbute to what you listen to and hear.</blockquote>
 					</section>
+				</section>
+
+				<!-- Pitch & Sine Waves -->
+				<section>
+					<section>
+						<h1>Pitch & Sine Waves</h1>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">Sin(t)</h2>
+						<canvas id="canvas_1" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+						
+						<script type="text/javascript">
+							var canvas1 = document.getElementById("canvas_1");
+							var quickplot1 = new QuickPlot(canvas1);
+							var halfRange1 = 4;
+							var halfDomain1 = 4;
+
+							var offset1 = 0;
+
+							quickplot1.setFunction(function(x){return Math.sin(x + offset1)});
+							quickplot1.setGraphDomain(-halfDomain1, halfDomain1);
+							quickplot1.setGraphRange(-halfRange1, halfRange1);
+
+							var time1;
+							function draw1() {
+								requestAnimationFrame(draw1);
+								var now = new Date().getTime();
+								var dt = (now - (time1 || now)) / 1000;
+								time1 = now;
+								
+								offset1 += dt * Math.PI;
+								quickplot1.drawGraph();
+							}
+
+							draw1();
+
+						</script>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">Amplitude [A Sin(t)]</h2>
+						<img src="img/amplitude_with_A_diagram.png">
+						<br><small>Amplitude ∝ Volume (The larger the amplitude, the louder)</small>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">Frequency [Sin(Ft)]</h2>
+						<img src="img/frequency_with_F_diagram.png">
+						<br><small>F = Frequency in hertz (repeats per second)</small>
+						<br><small>Frequency ∝ Pitch (The higher the frequency, the higher the pitch)</small>
+					</section>
+
+					<section>
+							<h2 style="text-transform: none;">A Sin(Ft)</h2>
+							
+							<canvas id="canvas_2" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+							<br>F = <b id="frequency_value"></b><input id="frequency_slider" type="range" min="0" max="10" value="1">
+							<br>A = <b id="amplitude_value"></b><input id="amplitude_slider" type="range" min="0" max="10" value="1">
+
+							<script type="text/javascript">
+								var frequencySlider = document.getElementById("frequency_slider");
+								var frequencyValue = document.getElementById("frequency_value");
+								var amplitudeValue = document.getElementById("amplitude_value");
+								var amplitudeSlider = document.getElementById("amplitude_slider");
+								var canvas2 = document.getElementById("canvas_2");
+								var quickplot2 = new QuickPlot(canvas2);
+								var halfRange = 10;
+								var halfDomain = 10;
+								
+								var offset = 0;
+	
+								quickplot2.setFunction(function(x){return amplitudeSlider.value * Math.sin((x + offset) * frequencySlider.value)});
+								quickplot2.setGraphDomain(-halfDomain, halfDomain);
+								quickplot2.setGraphRange(-halfRange, halfRange);
+	
+								var time2;
+								function draw2() {
+									requestAnimationFrame(draw2);
+									var now = new Date().getTime();
+									var dt = (now - (time2 || now)) / 1000;
+									time2 = now;
+									
+									offset += dt * Math.PI;
+									quickplot2.drawGraph();
+
+									frequencyValue.innerText = frequencySlider.value;
+									amplitudeValue.innerText = amplitudeSlider.value;
+								}
+								draw2();
+	
+							</script>
+					</section>
+
 				</section>
 			
 			</div>
