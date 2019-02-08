@@ -49,11 +49,11 @@
 						<li>Hearing & Listening</li>
 						<li>Pitch & Sine Waves</li>
 						<li>The 13 Intervals of Western Music</li>
+						<li>Consonance & Dissonance</li>
 						<li>Chords (Triads)</li>
 						<li>Scales</li>
 						<li>Chord Progressions</li>
-						<li>Bonus: Modes</li>
-						<li>Bonus: How Do We Tune Our Instruments?</li>
+						<li>Functional Harmony</li>
 					</ul>
 				</section>
 
@@ -98,7 +98,7 @@
 					<section>
 						<h2>Sound</h2>
 						<img src="img/sound_waves_diagram.jpg">
-						Source: <a href="https://www.scienceabc.com/pure-sciences/movement-of-sound-waves-through-different-media.html">www.scienceabc.com</a>
+						<br>Source: <a href="https://www.scienceabc.com/pure-sciences/movement-of-sound-waves-through-different-media.html">www.scienceabc.com</a>
 					</section>
 
 					<section>
@@ -268,8 +268,8 @@
 					<section>
 						<blockquote>Humans can generally hear between ~20Hz to ~20, 000Hz (20kHz). <br>(<a href="https://en.wikipedia.org/wiki/Hearing_range">Wikipedia</a>)</blockquote>
 						<blockquote>Most modern instruments are tuned with middle A = 440hz. <br>(<a href="https://www.iso.org/standard/3601.html">International Organization for Standardization</a>)</blockquote>
+						<blockquote>We say a note is sharper if it has a higher pitch and flatter is it has a lower pitch.</blockquote>
 					</section>
-
 				</section>
 
 				<!-- The 13 Intervals of Western Music -->
@@ -277,6 +277,145 @@
 					<section>
 						<h1>The 13 Intervals of Western Music™</h1>
 					</section>
+
+					<section>
+						<blockquote>An <b>interval</b> is the difference or distance between two pitches. We define an interval based off the <b>ratio</b> between the two pitches (The "interval/pitch ratio").</blockquote>
+					</section>
+
+					<section>
+						<h2 style="text-transform: none;">Example: Octave (8ve)</h2>
+						<canvas id="canvas_3" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+						
+						<script type="text/javascript">
+							var canvas3 = document.getElementById("canvas_3");
+							var quickplot3 = new QuickPlot(canvas3);
+							var halfRange3 = 4;
+							var halfDomain3 = 10;
+
+							quickplot3.setGraphDomain(-halfDomain3, halfDomain3);
+							quickplot3.setGraphRange(-halfRange3, halfRange3);
+							
+							quickplot3.setFunctionColor("#FF0000");
+							quickplot3.setBackgroundColor("#FFFFFFFF");
+							quickplot3.setFunction(function(x){return Math.sin(x)});
+							quickplot3.drawGraph();
+							
+							quickplot3.setFunctionColor("#0000FF");
+							quickplot3.setBackgroundColor("#FFFFFF00");
+							quickplot3.setFunction(function(x){return Math.sin(2*x)});
+							quickplot3.drawGraph();
+						</script>
+						<br>Pitch ratio of <b>1:2</b>
+						<br><small>For example, if we have A = 440hz, we have it's octave (also an A) at 880hz.</small>
+
+					</section>
+
+					<section>
+						<h6>Standard Intervals (Relative to C)</h6>
+						<table>
+							<thead>
+								<tr>
+									<th>STs</th>
+									<th>Name(s)</th>
+									<th>Ratio</th>
+									<th>Note</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="fragment" data-fragment-index="2">
+									<td>0</td>
+									<td>Perfect Unison, Diminished 2nd</td>
+									<td>1:1</td>
+									<td>C</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="3">
+									<td>1</td>
+									<td>Semitone, Half Step, Minor 2nd, Augmented Unison</td>
+									<td>15:16</td>
+									<td>C#</td>
+								</tr>
+								
+								<tr class="fragment" data-fragment-index="4">
+									<td>2</td>
+									<td>Wholetone, Whole Step, Major 2nd, Diminished 3rd</td>
+									<td>8:9</td>
+									<td>D</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="5">
+									<td>3</td>
+									<td>Minor 3rd, Augmented 2nd</td>
+									<td>5:6</td>
+									<td>D#</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="6">
+									<td>4</td>
+									<td>Major 3rd, Diminished 4th</td>
+									<td>4:5</td>
+									<td>E</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="7">
+									<td>5</td>
+									<td>Perfect 4th, Augmented 3rd</td>
+									<td>3:4</td>
+									<td>F</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="8">
+									<td>6</td>
+									<td>Augmented 4th, Diminished 5th</td>
+									<td>32:45</td>
+									<td>F#</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="9">
+									<td>7</td>
+									<td>Perfect 5th, Diminished 6th</td>
+									<td>2:3</td>
+									<td>G</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="10">
+									<td>8</td>
+									<td>Minor 6th, Diminished 7th</td>
+									<td>5:8</td>
+									<td>G#</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="11">
+									<td>9</td>
+									<td>Major 6th, Augmented 7th</td>
+									<td>3:5</td>
+									<td>A</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="12">
+									<td>10</td>
+									<td>Minor 7th, Diminished 6th</td>
+									<td>9:16</td>
+									<td>A#</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="13">
+									<td>11</td>
+									<td>Major 7th, Diminished 8ve</td>
+									<td>8:15</td>
+									<td>B</td>
+								</tr>
+
+								<tr class="fragment" data-fragment-index="1">
+									<td>12</td>
+									<td>Perfect 8ve, Augmented 7th</td>
+									<td>1:2</td>
+									<td>C</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					
 				</section>
 			
 			</div>
@@ -295,7 +434,12 @@
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
+				],
+				// width: '100%',
+				// height: '100%',
+				margin: 0.05,
+				minScale: 0.2,
+				maxScale: 3.0
 			});
 		</script>
 	</body>

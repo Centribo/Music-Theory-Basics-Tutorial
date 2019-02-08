@@ -166,7 +166,7 @@ body {
 .reveal blockquote {
 	display: block;
 	position: relative;
-	width: 70%;
+	width: 80%;
 	margin: 20px auto;
 	padding: 5px;
 	font-style: italic;
@@ -210,6 +210,8 @@ body {
 }
 
 .reveal table {
+	width: 100%;
+	font-size: 0.65em;
 	margin: auto;
 	border-collapse: collapse;
 	border-spacing: 0; 
@@ -222,7 +224,7 @@ body {
 .reveal table th,
 .reveal table td {
 	text-align: left;
-	padding: 0.2em 0.5em 0.2em 0.5em;
+	padding: 0.1em 0.5em 0.1em 0.5em;
 	border-bottom: 1px solid; 
 }
 
