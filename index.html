@@ -24,6 +24,34 @@
 		<!-- QuickPlotJS -->
 		<script type="text/javascript" src="js/quickplotmini.js"></script>
 
+		<!-- MIDI RELATED SCRIPTS -->
+		<!-- Import soundfonts, so we can run this locally without a webserver -->
+		<script src="./soundfont/acoustic_grand_piano-ogg.js"></script>
+		<script src="./soundfont/acoustic_grand_piano-mp3.js"></script>
+		
+		<!-- Imports and includes -->
+		<script src="./js/midi_js/inc/shim/Base64.js" type="text/javascript"></script>
+		<script src="./js/midi_js/inc/shim/Base64binary.js" type="text/javascript"></script>
+		<script src="./js/midi_js/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/audioDetect.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/gm.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/loader.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/util/dom_request_xhr.js" type="text/javascript"></script>
+		<script src="./js/midi_js/js/util/dom_request_script.js" type="text/javascript"></script>
+		
+		<!-- Custom scripts -->
+		<script src="./js/midi-notes.js" type="text/javascript"></script>
+		<script src="./js/music-theory.js" type="text/javascript"></script>
+		<script src="./js/midi-controller.js" type="text/javascript"></script>
+		<script src="./js/piano-keyboard.js" type="text/javascript"></script>
+		<script src="./js/note-inputter.js" type="text/javascript"></script>
+		<script src="./js/abc-renderer.js" type="text/javascript"></script>
+		<script src="./js/main.js" type="text/javascript" defer></script>
+		<script src="./js/settings.js" type="text/javascript" defer></script>
+
 	</head>
 	<body>
 		<!-- SLIDES -->
@@ -366,7 +394,7 @@
 
 								<tr class="fragment" data-fragment-index="8">
 									<td>6</td>
-									<td>Augmented 4th, Diminished 5th</td>
+									<td>Tritone, Augmented 4th, Diminished 5th</td>
 									<td>32:45</td>
 									<td>F#</td>
 								</tr>
@@ -434,7 +462,110 @@
 					</section>
 					
 					<section>
+						<h6>Standard Intervals (Relative to C)</h6>
 						<!-- List intervals with sound samples -->
+						<table>
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Ratio</th>
+									<th>Play</th>
+									<th>Note</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Unison</td>
+									<td>1:1</td>
+									<td><button onclick="previewInterval(60, 60)">Play</button></td>
+									<td>C</td>
+								</tr>
+
+								<tr>
+									<td>Minor 2nd</td>
+									<td>15:16</td>
+									<td><button onclick="previewInterval(60, 61)">Play</button></td>
+									<td>C#</td>
+								</tr>
+
+								<tr>
+									<td>Major 2nd</td>
+									<td>8:9</td>
+									<td><button onclick="previewInterval(60, 62)">Play</button></td>
+									<td>D</td>
+								</tr>
+
+								<tr>
+									<td>Minor 3rd</td>
+									<td>5:6</td>
+									<td><button onclick="previewInterval(60, 63)">Play</button></td>
+									<td>D#</td>
+								</tr>
+
+								<tr>
+									<td>Major 3rd</td>
+									<td>4:5</td>
+									<td><button onclick="previewInterval(60, 64)">Play</button></td>
+									<td>E</td>
+								</tr>
+
+								<tr>
+									<td>Perfect 4th</td>
+									<td>3:4</td>
+									<td><button onclick="previewInterval(60, 65)">Play</button></td>
+									<td>F</td>
+								</tr>
+
+								<tr>
+									<td>Tritone</td>
+									<td>32:45</td>
+									<td><button onclick="previewInterval(60, 66)">Play</button></td>
+									<td>F#</td>
+								</tr>
+
+								<tr>
+									<td>Perfect 5th</td>
+									<td>2:3</td>
+									<td><button onclick="previewInterval(60, 67)">Play</button></td>
+									<td>G</td>
+								</tr>
+
+								<tr>
+									<td>Minor 6th</td>
+									<td>5:8</td>
+									<td><button onclick="previewInterval(60, 68)">Play</button></td>
+									<td>G#</td>
+								</tr>
+
+								<tr>
+									<td>Major 6th</td>
+									<td>3:5</td>
+									<td><button onclick="previewInterval(60, 69)">Play</button></td>
+									<td>A</td>
+								</tr>
+
+								<tr>
+									<td>Minor 7th</td>
+									<td>9:16</td>
+									<td><button onclick="previewInterval(60, 70)">Play</button></td>
+									<td>A#</td>
+								</tr>
+
+								<tr>
+									<td>Major 7th</td>
+									<td>8:15</td>
+									<td><button onclick="previewInterval(60, 71)">Play</button></td>
+									<td>B</td>
+								</tr>
+								
+								<tr>
+									<td>Octave</td>
+									<td>1:2</td>
+									<td><button onclick="previewInterval(60, 71)">Play</button></td>
+									<td>C</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
