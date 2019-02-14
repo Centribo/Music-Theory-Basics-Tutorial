@@ -1,605 +1,956 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>Music Theory 101</title>
-
-		<link rel="stylesheet" type="text/css" href="css/reveal.css">
-		<link rel="stylesheet" type="text/css" href="css/theme/centribo_orange.css">
-
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-
-		<!-- QuickPlotJS -->
-		<script type="text/javascript" src="js/quickplotmini.js"></script>
-
-		<!-- MIDI RELATED SCRIPTS -->
-		<!-- Import soundfonts, so we can run this locally without a webserver -->
-		<script src="./soundfont/acoustic_grand_piano-ogg.js"></script>
-		<script src="./soundfont/acoustic_grand_piano-mp3.js"></script>
-		
-		<!-- Imports and includes -->
-		<script src="./js/midi_js/inc/shim/Base64.js" type="text/javascript"></script>
-		<script src="./js/midi_js/inc/shim/Base64binary.js" type="text/javascript"></script>
-		<script src="./js/midi_js/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/audioDetect.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/gm.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/loader.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/plugin.audiotag.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/plugin.webaudio.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/midi/plugin.webmidi.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/util/dom_request_xhr.js" type="text/javascript"></script>
-		<script src="./js/midi_js/js/util/dom_request_script.js" type="text/javascript"></script>
-		
-		<!-- Custom scripts -->
-		<script src="./js/midi-notes.js" type="text/javascript"></script>
-		<script src="./js/music-theory.js" type="text/javascript"></script>
-		<script src="./js/midi-controller.js" type="text/javascript"></script>
-		<script src="./js/piano-keyboard.js" type="text/javascript"></script>
-		<script src="./js/note-inputter.js" type="text/javascript"></script>
-		<script src="./js/abc-renderer.js" type="text/javascript"></script>
-		<script src="./js/main.js" type="text/javascript" defer></script>
-		<script src="./js/settings.js" type="text/javascript" defer></script>
-
-	</head>
-	<body>
-		<!-- SLIDES -->
-		<div class="reveal">
-			<div class="slides">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<title>Music Theory 101</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/reveal.css">
+	<link rel="stylesheet" type="text/css" href="css/theme/centribo_orange.css">
+	
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	
+	<!-- QuickPlotJS -->
+	<script type="text/javascript" src="js/quickplotmini.js"></script>
+	
+	<!-- MIDI RELATED SCRIPTS -->
+	<!-- Import soundfonts, so we can run this locally without a webserver -->
+	<script src="./soundfont/acoustic_grand_piano-ogg.js"></script>
+	<script src="./soundfont/acoustic_grand_piano-mp3.js"></script>
+	
+	<!-- Imports and includes -->
+	<script src="./js/midi_js/inc/shim/Base64.js" type="text/javascript"></script>
+	<script src="./js/midi_js/inc/shim/Base64binary.js" type="text/javascript"></script>
+	<script src="./js/midi_js/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/audioDetect.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/gm.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/loader.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/util/dom_request_xhr.js" type="text/javascript"></script>
+	<script src="./js/midi_js/js/util/dom_request_script.js" type="text/javascript"></script>
+	
+	<!-- Custom scripts -->
+	<script src="./js/midi-notes.js" type="text/javascript"></script>
+	<script src="./js/music-theory.js" type="text/javascript"></script>
+	<script src="./js/midi-controller.js" type="text/javascript"></script>
+	<script src="./js/piano-keyboard.js" type="text/javascript"></script>
+	<script src="./js/note-inputter.js" type="text/javascript"></script>
+	<script src="./js/abc-renderer.js" type="text/javascript"></script>
+	<script src="./js/main.js" type="text/javascript" defer></script>
+	<script src="./js/settings.js" type="text/javascript" defer></script>
+	
+</head>
+<body>
+	<!-- SLIDES -->
+	<div class="reveal">
+		<div class="slides">
+			<section>
 				<section>
-					<section>
-						<h1>Music Theory 101</h1></br>
-						<h4>Pitch, Harmonies, Chords, & Chord Progressions</h4>
-
-						<a href="http://www.github.com/Centribo/music-theory-basics-tutorial">http://www.github.com/Centribo/music-theory-basics-tutorial</a>
-					</section>
-					<section>
-						<h1>Adam Leung</h1>
-						<a href="http://www.adamleung.me">http://www.adamleung.me</a>
-					</section>
+					<h1>Music Theory 101</h1></br>
+					<h4>Pitch, Harmonies, Chords, & Chord Progressions</h4>
+					
+					<a href="http://www.github.com/Centribo/music-theory-basics-tutorial">http://www.github.com/Centribo/music-theory-basics-tutorial</a>
 				</section>
-
 				<section>
-					<h1>Topics:</h1>
+					<h1>Adam Leung</h1>
+					<a href="http://www.adamleung.me">http://www.adamleung.me</a>
+				</section>
+			</section>
+			
+			<section>
+				<h1>Topics:</h1>
+				<ul>
+					<li><a href="#/why-learn-music-theory">Why Learn Music Theory?</a></li>
+					<li><a href="#/hearing-and-listening">Hearing & Listening</a></li>
+					<li><a href="#/pitch-and-sine-waves">Pitch & Sine Waves</a></li>
+					<li><a href="#/the-13-intervals-of-western-music">The 13 Intervals of Western Music</a></li>
+					<li><a href="#/consonance-and-dissonance">Consonance & Dissonance</a></li>
+					<li><a href="#/chords-triads">Chords (Triads)</a></li>
+					<li><a href="#/scales-keys">Scales/Keys</a></li>
+					<li><a href="#diatonic-chords/">Diatonic Chords</a></li>
+					<li><a href="#/functional-harmony-and-chord-progressions">Functional Harmony & Chord Progressions</a></li>
+				</ul>
+			</section>
+			
+			<!-- Why Learn Music Theory? -->
+			<section id="why-learn-music-theory">
+				<section>
+					<h1>Why Learn Music Theory?</h1>
+				</section>
+				
+				<section>
 					<ul>
-						<li><a href="#/why-learn-music-theory">Why Learn Music Theory?</a></li>
-						<li><a href="#/hearing-and-listening">Hearing & Listening</a></li>
-						<li><a href="#/pitch-and-sine-waves">Pitch & Sine Waves</a></li>
-						<li><a href="#/the-13-intervals-of-western-music">The 13 Intervals of Western Music</a></li>
-						<li><a href="#/consonance-and-dissonance">Consonance & Dissonance</a></li>
-						<li><a href="#/">Chords (Triads)</a></li>
-						<li><a href="#/">Scales</a></li>
-						<li><a href="#/">Chord Progressions</a></li>
-						<li><a href="#/">Functional Harmony</a></li>
+						<li>Music as a language</li>
+						<li>Communication with musicians/composers</li>
+						<li>Writing/Understanding music</li>
+						<li>Music appreciation</li>
+						<li>Playing instruments</li>
+						<li>Learning is fun/interesting 🤔</li>
 					</ul>
 				</section>
-
-				<!-- Why Learn Music Theory? -->
-				<section id="why-learn-music-theory">
-					<section>
-						<h1>Why Learn Music Theory?</h1>
-					</section>
-					
-					<section>
-						<ul>
-							<li>Music as a language</li>
-							<li>Communication with musicians/composers</li>
-							<li>Writing/Understanding music</li>
-							<li>Music appreciation</li>
-							<li>Playing instruments</li>
-							<li>Learning is fun/interesting 🤔</li>
-						</ul>
-					</section>
-
-					<section>
-						<h4>Prescriptive:</h4><blockquote>"relating to the imposition or enforcement of a rule or method."</blockquote>
-						<h4>Descriptive:</h4><blockquote>"serving or seeking to describe."</blockquote>
-						</br>
-						<b>Adam Neely: "Why you should learn music theory (Prescriptivism vs Descriptivism)"</b>
-						<a href="http://www.youtube.com/watch?v=49alQj7c5ps">http://www.youtube.com/watch?v=49alQj7c5ps</a>
-					</section>
-
-					<section>
-						My opinion:
-						<blockquote>Music theory aims to <b>describe</b> what artists do. It is a very useful tool for analyzing & understanding music, as well as providing a reliable foundation for composing music. Ultimately, regardless of what music theory says, your ears are the final judge.</blockquote>
-					</section>
-				</section>
-
-				<!-- Hearing & Listening -->
-				<section id="hearing-and-listening">
-					<section>
-						<h1>Hearing & Listening</h1>
-					</section>
-
-						
-					<section>
-						<h2>Sound</h2>
-						<img src="img/sound_waves_diagram.jpg">
-						<br>Source: <a href="https://www.scienceabc.com/pure-sciences/movement-of-sound-waves-through-different-media.html">www.scienceabc.com</a>
-					</section>
-
-					<section>
-						<h2>Ears</h2>
-						<img src="img/ear_diagram.png">
-					</section>
-
-					<section>
-						<h4>Hearing:</h4><blockquote>The physiological process of converting sound waves to a stimulus in the brain.</blockquote>
-						<h4>Listening:</h4><blockquote>The conscious process of allocating attention to what one hears, and analyzing/understanding that stimulus.</blockquote>
-					</section>
-
-					<section>
-							Takeaway:
-							<blockquote>What you hear and how you listen affects your subjective experience of music. Emotional and physical context come together with other factors to contirbute to what you listen to and hear.</blockquote>
-					</section>
-				</section>
-
-				<!-- Pitch & Sine Waves -->
-				<section id="pitch-and-sine-waves">
-					<section>
-						<h1>Pitch & Sine Waves</h1>
-					</section>
-
-					<section>
-						<h2 style="text-transform: none;">Sin(t)</h2>
-						<canvas id="canvas_1" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
-						
-						<script type="text/javascript">
-							var canvas1 = document.getElementById("canvas_1");
-							var quickplot1 = new QuickPlot(canvas1);
-							var halfRange1 = 4;
-							var halfDomain1 = 4;
-
-							var offset1 = 0;
-
-							quickplot1.setFunction(function(x){return Math.sin(x + offset1)});
-							quickplot1.setGraphDomain(-halfDomain1, halfDomain1);
-							quickplot1.setGraphRange(-halfRange1, halfRange1);
-
-							var time1;
-							function draw1() {
-								requestAnimationFrame(draw1);
-								var now = new Date().getTime();
-								var dt = (now - (time1 || now)) / 1000;
-								time1 = now;
-								
-								offset1 += dt * Math.PI;
-								quickplot1.drawGraph();
-							}
-
-							draw1();
-
-						</script>
-					</section>
-
-					<section>
-						<h2 style="text-transform: none;">Amplitude [A Sin(t)]</h2>
-						<img src="img/amplitude_with_A_diagram.png">
-						<br><small>Amplitude ∝ Volume (The larger the amplitude, the louder)</small>
-					</section>
-
-					<section>
-						<h2 style="text-transform: none;">Frequency [Sin(Ft)]</h2>
-						<img src="img/frequency_with_F_diagram.png">
-						<br><small>F = Frequency in hertz (repeats per second)</small>
-						<br><small>Frequency ∝ Pitch (The higher the frequency, the higher the pitch)</small>
-					</section>
-
-					<section>
-							<h2 style="text-transform: none;">A Sin(Ft)</h2>
-							
-							<canvas id="canvas_2" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
-							<br>F = <b id="frequency_value"></b><input id="frequency_slider" type="range" min="220" max="880" value="440">
-							<br>A = <b id="amplitude_value"></b><input id="amplitude_slider" type="range" min="0" max="10" value="1">
-							<br><button onclick="toggleOscillatorAudio()">Play/Stop</button>
-							<select id="oscillator_type_selector">
-								<option value="sine">Sine</option>
-								<option value="square">Square</option>
-								<option value="sawtooth">Sawtooth</option>
-								<option value="triangle">Triangle</option>
-							</select>
-							
-							<script type="text/javascript">
-								var frequencySlider = document.getElementById("frequency_slider");
-								var frequencyValue = document.getElementById("frequency_value");
-								var amplitudeValue = document.getElementById("amplitude_value");
-								var amplitudeSlider = document.getElementById("amplitude_slider");
-								var oscillatorTypeSelector = document.getElementById("oscillator_type_selector");
-								var canvas2 = document.getElementById("canvas_2");
-								var quickplot2 = new QuickPlot(canvas2);
-								var halfRange = 10;
-								var halfDomain = 10;
-								var offset = 0;
-								
-								var audioCtx;
-								var o;
-								var g;
-
-								function toggleOscillatorAudio(){
-									if(audioCtx){
-										o.stop();
-										// g.close();
-										audioCtx.close();
-										audioCtx = null;
-									} else {
-										audioCtx = new AudioContext();
-										o = audioCtx.createOscillator();
-										g = audioCtx.createGain();
-										o.type = oscillatorTypeSelector.value;
-										g.gain.value = 0.1;
-										g.connect(audioCtx.destination);
-										o.connect(g);
-										o.start();
-									}
-								}
-	
-								quickplot2.setFunction(function(x){
-									var freq = frequencySlider.value/220;
-									var finalX = (x + offset) * freq;
-
-									switch(oscillatorTypeSelector.value){
-										case "triangle":
-										// TODO: FILL IN THIS FUNCTION
-										// return Math.abs(finalX/32 % frequencySlider.value);
-										
-										case "sine":
-											return amplitudeSlider.value * Math.sin(finalX);
-										break;
-										case "square":
-											return amplitudeSlider.value * Math.pow(-1, Math.floor(finalX/4));
-										break;
-										case "sawtooth":
-											return (amplitudeSlider.value*2 * ((finalX/8) - Math.floor(finalX/8))) - amplitudeSlider.value;
-										break;
-										default:
-											return x;
-										break;
-									}
-								});
-								quickplot2.setGraphDomain(-halfDomain, halfDomain);
-								quickplot2.setGraphRange(-halfRange, halfRange);
-	
-								var time2;
-								function draw2() {
-									requestAnimationFrame(draw2);
-									var now = new Date().getTime();
-									var dt = (now - (time2 || now)) / 1000;
-									time2 = now;
-									
-									offset += dt * Math.PI;
-
-									quickplot2.drawGraph();
-									if(audioCtx){
-										g.gain.value = amplitudeSlider.value/10;
-										o.frequency.value = frequencySlider.value
-									}
-									
-									frequencyValue.innerText = frequencySlider.value;
-									amplitudeValue.innerText = amplitudeSlider.value;
-								}
-								draw2();
-	
-							</script>
-					</section>
-
-					<section>
-						<blockquote>Humans can generally hear between ~20Hz to ~20, 000Hz (20kHz). <br>(<a href="https://en.wikipedia.org/wiki/Hearing_range">Wikipedia</a>)</blockquote>
-						<blockquote>Most modern instruments are tuned with middle A = 440hz. <br>(<a href="https://www.iso.org/standard/3601.html">International Organization for Standardization</a>)</blockquote>
-						<blockquote>We say a note is sharper if it has a higher pitch and flatter is it has a lower pitch.</blockquote>
-					</section>
-				</section>
-
-				<!-- The 13 Intervals of Western Music -->
-				<section id="the-13-intervals-of-western-music">
-					<section>
-						<h1>The 13 Intervals of Western Music™</h1>
-					</section>
-
-					<section>
-						<blockquote>An <b>interval</b> is the difference or distance between two pitches. We define an interval based off the <b>ratio</b> between the two pitches (The "interval/pitch ratio").</blockquote>
-					</section>
-
-					<section>
-						<h2 style="text-transform: none;">Example: Octave (8ve)</h2>
-						<canvas id="canvas_3" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
-						
-						<script type="text/javascript">
-							var canvas3 = document.getElementById("canvas_3");
-							var quickplot3 = new QuickPlot(canvas3);
-							var halfRange3 = 4;
-							var halfDomain3 = 10;
-
-							quickplot3.setGraphDomain(-halfDomain3, halfDomain3);
-							quickplot3.setGraphRange(-halfRange3, halfRange3);
-							
-							quickplot3.setFunctionColor("#FF0000");
-							quickplot3.setBackgroundColor("#FFFFFFFF");
-							quickplot3.setFunction(function(x){return Math.sin(x)});
-							quickplot3.drawGraph();
-							
-							quickplot3.setFunctionColor("#0000FF");
-							quickplot3.setBackgroundColor("#FFFFFF00");
-							quickplot3.setFunction(function(x){return Math.sin(2*x)});
-							quickplot3.drawGraph();
-						</script>
-						<br>Pitch ratio of <b>1:2</b>
-						<br><small>For example, if we have A = 440hz, we have it's octave (also an A) at 880hz.</small>
-
-					</section>
-
-					<section>
-						<h6>Standard Intervals (Relative to C)</h6>
-						<table>
-							<thead>
-								<tr>
-									<th>STs</th>
-									<th>Name(s)</th>
-									<th>Ratio</th>
-									<th>Note</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="fragment" data-fragment-index="2">
-									<td>0</td>
-									<td>Perfect Unison, Diminished 2nd</td>
-									<td>1:1</td>
-									<td>C</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="3">
-									<td>1</td>
-									<td>Semitone, Half Step, Minor 2nd, Augmented Unison</td>
-									<td>15:16</td>
-									<td>C#</td>
-								</tr>
-								
-								<tr class="fragment" data-fragment-index="4">
-									<td>2</td>
-									<td>Wholetone, Whole Step, Major 2nd, Diminished 3rd</td>
-									<td>8:9</td>
-									<td>D</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="5">
-									<td>3</td>
-									<td>Minor 3rd, Augmented 2nd</td>
-									<td>5:6</td>
-									<td>D#</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="6">
-									<td>4</td>
-									<td>Major 3rd, Diminished 4th</td>
-									<td>4:5</td>
-									<td>E</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="7">
-									<td>5</td>
-									<td>Perfect 4th, Augmented 3rd</td>
-									<td>3:4</td>
-									<td>F</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="8">
-									<td>6</td>
-									<td>Tritone, Augmented 4th, Diminished 5th</td>
-									<td>32:45</td>
-									<td>F#</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="9">
-									<td>7</td>
-									<td>Perfect 5th, Diminished 6th</td>
-									<td>2:3</td>
-									<td>G</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="10">
-									<td>8</td>
-									<td>Minor 6th, Diminished 7th</td>
-									<td>5:8</td>
-									<td>G#</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="11">
-									<td>9</td>
-									<td>Major 6th, Augmented 7th</td>
-									<td>3:5</td>
-									<td>A</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="12">
-									<td>10</td>
-									<td>Minor 7th, Diminished 6th</td>
-									<td>9:16</td>
-									<td>A#</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="13">
-									<td>11</td>
-									<td>Major 7th, Diminished 8ve</td>
-									<td>8:15</td>
-									<td>B</td>
-								</tr>
-
-								<tr class="fragment" data-fragment-index="1">
-									<td>12</td>
-									<td>Perfect 8ve, Augmented 7th</td>
-									<td>1:2</td>
-									<td>C</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-				</section>
-
-				<!-- Consonance & Dissonance -->
-				<section id="consonance-and-dissonance">
-					<section>
-						<h1>Consonance & Dissonance</h1>
-					</section>
-
-					<section>
-						<blockquote>Intervals which are <b>consonant</b> tend to sound harmonious, pleasant, and agreeable. <b>Dissonant</b> intervals tend to sound harsh, unpleasent, and unagreeable.</blockquote>
-					</section>
-
-					<section>
-						<h3>But how do we know what is consonant and what is dissonant?</h3>
-						Your ears are actually great calculators.
-						The more "complex" the ratio (or specifically the denominator), the more dissonant.
-					</section>
-					
-					<section>
-						<h6>Standard Intervals (Relative to C)</h6>
-						<!-- List intervals with sound samples -->
-						<table>
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Ratio</th>
-									<th>Play</th>
-									<th>Note</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Unison</td>
-									<td>1:1</td>
-									<td><button onclick="previewInterval(60, 60)">Play</button></td>
-									<td>C</td>
-								</tr>
-
-								<tr>
-									<td>Minor 2nd</td>
-									<td>15:16</td>
-									<td><button onclick="previewInterval(60, 61)">Play</button></td>
-									<td>C#</td>
-								</tr>
-
-								<tr>
-									<td>Major 2nd</td>
-									<td>8:9</td>
-									<td><button onclick="previewInterval(60, 62)">Play</button></td>
-									<td>D</td>
-								</tr>
-
-								<tr>
-									<td>Minor 3rd</td>
-									<td>5:6</td>
-									<td><button onclick="previewInterval(60, 63)">Play</button></td>
-									<td>D#</td>
-								</tr>
-
-								<tr>
-									<td>Major 3rd</td>
-									<td>4:5</td>
-									<td><button onclick="previewInterval(60, 64)">Play</button></td>
-									<td>E</td>
-								</tr>
-
-								<tr>
-									<td>Perfect 4th</td>
-									<td>3:4</td>
-									<td><button onclick="previewInterval(60, 65)">Play</button></td>
-									<td>F</td>
-								</tr>
-
-								<tr>
-									<td>Tritone</td>
-									<td>32:45</td>
-									<td><button onclick="previewInterval(60, 66)">Play</button></td>
-									<td>F#</td>
-								</tr>
-
-								<tr>
-									<td>Perfect 5th</td>
-									<td>2:3</td>
-									<td><button onclick="previewInterval(60, 67)">Play</button></td>
-									<td>G</td>
-								</tr>
-
-								<tr>
-									<td>Minor 6th</td>
-									<td>5:8</td>
-									<td><button onclick="previewInterval(60, 68)">Play</button></td>
-									<td>G#</td>
-								</tr>
-
-								<tr>
-									<td>Major 6th</td>
-									<td>3:5</td>
-									<td><button onclick="previewInterval(60, 69)">Play</button></td>
-									<td>A</td>
-								</tr>
-
-								<tr>
-									<td>Minor 7th</td>
-									<td>9:16</td>
-									<td><button onclick="previewInterval(60, 70)">Play</button></td>
-									<td>A#</td>
-								</tr>
-
-								<tr>
-									<td>Major 7th</td>
-									<td>8:15</td>
-									<td><button onclick="previewInterval(60, 71)">Play</button></td>
-									<td>B</td>
-								</tr>
-								
-								<tr>
-									<td>Octave</td>
-									<td>1:2</td>
-									<td><button onclick="previewInterval(60, 72)">Play</button></td>
-									<td>C</td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-
-					<section>
-						Context generally defines what is consonant/dissonant, but here's a general guideline:
-						<blockquote><b>Perfect consonances:</b> Unison, Octaves, Perfect 4ths, Perfect 5ths</blockquote>
-						<blockquote><b>Imperfect consonances:</b> Major/Minor 3rds, Major/Minor 6ths</blockquote>
-						<blockquote><b>Sharp & soft dissonances:</b> Depends on musical context</blockquote>
-					</section>
-
-				</section>
+				
+				<section>
+					<h4>Prescriptive:</h4><blockquote>"relating to the imposition or enforcement of a rule or method."</blockquote>
+					<h4>Descriptive:</h4><blockquote>"serving or seeking to describe."</blockquote>
+				</br>
+				<b>Adam Neely: "Why you should learn music theory (Prescriptivism vs Descriptivism)"</b>
+				<a href="http://www.youtube.com/watch?v=49alQj7c5ps">http://www.youtube.com/watch?v=49alQj7c5ps</a>
+			</section>
 			
-			</div>
-		</div>
+			<section>
+				My opinion:
+				<blockquote>Music theory aims to <b>describe</b> what artists do. It is a very useful tool for analyzing & understanding music, as well as providing a reliable foundation for composing music. Ultimately, regardless of what music theory says, your ears are the final judge.</blockquote>
+			</section>
+		</section>
+		
+		<!-- Hearing & Listening -->
+		<section id="hearing-and-listening">
+			<section>
+				<h1>Hearing & Listening</h1>
+			</section>
+			
+			
+			<section>
+				<h2>Sound</h2>
+				<img src="img/sound_waves_diagram.jpg">
+				<br>Source: <a href="https://www.scienceabc.com/pure-sciences/movement-of-sound-waves-through-different-media.html">www.scienceabc.com</a>
+			</section>
+			
+			<section>
+				<h2>Ears</h2>
+				<img src="img/ear_diagram.png">
+			</section>
+			
+			<section>
+				<h4>Hearing:</h4><blockquote>The physiological process of converting sound waves to a stimulus in the brain.</blockquote>
+				<h4>Listening:</h4><blockquote>The conscious process of allocating attention to what one hears, and analyzing/understanding that stimulus.</blockquote>
+			</section>
+			
+			<section>
+				Takeaway:
+				<blockquote>What you hear and how you listen affects your subjective experience of music. Emotional and physical context come together with other factors to contirbute to what you listen to and hear.</blockquote>
+			</section>
+		</section>
+		
+		<!-- Pitch & Sine Waves -->
+		<section id="pitch-and-sine-waves">
+			<section>
+				<h1>Pitch & Sine Waves</h1>
+			</section>
+			
+			<section>
+				<h2 style="text-transform: none;">Sin(t)</h2>
+				<canvas id="canvas_1" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+				
+				<script type="text/javascript">
+					var canvas1 = document.getElementById("canvas_1");
+					var quickplot1 = new QuickPlot(canvas1);
+					var halfRange1 = 4;
+					var halfDomain1 = 4;
+					
+					var offset1 = 0;
+					
+					quickplot1.setFunction(function(x){return Math.sin(x + offset1)});
+					quickplot1.setGraphDomain(-halfDomain1, halfDomain1);
+					quickplot1.setGraphRange(-halfRange1, halfRange1);
+					
+					var time1;
+					function draw1() {
+						requestAnimationFrame(draw1);
+						var now = new Date().getTime();
+						var dt = (now - (time1 || now)) / 1000;
+						time1 = now;
+						
+						offset1 += dt * Math.PI;
+						quickplot1.drawGraph();
+					}
+					
+					draw1();
+					
+				</script>
+			</section>
+			
+			<section>
+				<h2 style="text-transform: none;">Amplitude [A Sin(t)]</h2>
+				<img src="img/amplitude_with_A_diagram.png">
+				<br><small>Amplitude ∝ Volume (The larger the amplitude, the louder)</small>
+			</section>
+			
+			<section>
+				<h2 style="text-transform: none;">Frequency [Sin(Ft)]</h2>
+				<img src="img/frequency_with_F_diagram.png">
+				<br><small>F = Frequency in hertz (repeats per second)</small>
+				<br><small>Frequency ∝ Pitch (The higher the frequency, the higher the pitch)</small>
+			</section>
+			
+			<section>
+				<h2 style="text-transform: none;">A Sin(Ft)</h2>
+				
+				<canvas id="canvas_2" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+				<br>F = <b id="frequency_value"></b><input id="frequency_slider" type="range" min="220" max="880" value="440">
+				<br>A = <b id="amplitude_value"></b><input id="amplitude_slider" type="range" min="0" max="10" value="1">
+				<br><button onclick="toggleOscillatorAudio()">Play/Stop</button>
+				<select id="oscillator_type_selector">
+					<option value="sine">Sine</option>
+					<option value="square">Square</option>
+					<option value="sawtooth">Sawtooth</option>
+					<option value="triangle">Triangle</option>
+				</select>
+				
+				<script type="text/javascript">
+					var frequencySlider = document.getElementById("frequency_slider");
+					var frequencyValue = document.getElementById("frequency_value");
+					var amplitudeValue = document.getElementById("amplitude_value");
+					var amplitudeSlider = document.getElementById("amplitude_slider");
+					var oscillatorTypeSelector = document.getElementById("oscillator_type_selector");
+					var canvas2 = document.getElementById("canvas_2");
+					var quickplot2 = new QuickPlot(canvas2);
+					var halfRange = 10;
+					var halfDomain = 10;
+					var offset = 0;
+					
+					var audioCtx;
+					var o;
+					var g;
+					
+					function toggleOscillatorAudio(){
+						if(audioCtx){
+							o.stop();
+							// g.close();
+							audioCtx.close();
+							audioCtx = null;
+						} else {
+							audioCtx = new AudioContext();
+							o = audioCtx.createOscillator();
+							g = audioCtx.createGain();
+							o.type = oscillatorTypeSelector.value;
+							g.gain.value = 0.1;
+							g.connect(audioCtx.destination);
+							o.connect(g);
+							o.start();
+						}
+					}
+					
+					quickplot2.setFunction(function(x){
+						var freq = frequencySlider.value/220;
+						var finalX = (x + offset) * freq;
+						
+						switch(oscillatorTypeSelector.value){
+							case "triangle":
+							// TODO: FILL IN THIS FUNCTION
+							// return Math.abs(finalX/32 % frequencySlider.value);
+							
+							case "sine":
+							return amplitudeSlider.value * Math.sin(finalX);
+							break;
+							case "square":
+							return amplitudeSlider.value * Math.pow(-1, Math.floor(finalX/4));
+							break;
+							case "sawtooth":
+							return (amplitudeSlider.value*2 * ((finalX/8) - Math.floor(finalX/8))) - amplitudeSlider.value;
+							break;
+							default:
+							return x;
+							break;
+						}
+					});
+					quickplot2.setGraphDomain(-halfDomain, halfDomain);
+					quickplot2.setGraphRange(-halfRange, halfRange);
+					
+					var time2;
+					function draw2() {
+						requestAnimationFrame(draw2);
+						var now = new Date().getTime();
+						var dt = (now - (time2 || now)) / 1000;
+						time2 = now;
+						
+						offset += dt * Math.PI;
+						
+						quickplot2.drawGraph();
+						if(audioCtx){
+							g.gain.value = amplitudeSlider.value/10;
+							o.frequency.value = frequencySlider.value
+						}
+						
+						frequencyValue.innerText = frequencySlider.value;
+						amplitudeValue.innerText = amplitudeSlider.value;
+					}
+					draw2();
+					
+				</script>
+			</section>
+			
+			<section>
+				<blockquote>Humans can generally hear between ~20Hz to ~20, 000Hz (20kHz). <br>(<a href="https://en.wikipedia.org/wiki/Hearing_range">Wikipedia</a>)</blockquote>
+				<blockquote>Most modern instruments are tuned with middle A = 440hz. <br>(<a href="https://www.iso.org/standard/3601.html">International Organization for Standardization</a>)</blockquote>
+				<blockquote>We say a note is sharper (#) if it has a higher pitch and flatter (b) is it has a lower pitch.</blockquote>
+			</section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+			<section>
+				<blockquote>We give these 12 notes names:<br><b>C, C#/Db, D, D#/Eb, E, F, F#/Gb, G, G#/Ab, A, A#/Bb, B</b></blockquote>
+			</section>
+		</section>
+		
+		<!-- The 13 Intervals of Western Music -->
+		<section id="the-13-intervals-of-western-music">
+			<section>
+				<h1>The 13 Intervals of Western Music™</h1>
+			</section>
+			
+			<section>
+				<blockquote>An <b>interval</b> is the difference or distance between two pitches. We define an interval based off the <b>ratio</b> between the two pitches (The "interval/pitch ratio").</blockquote>
+			</section>
+			
+			<section>
+				<h2 style="text-transform: none;">Example: Octave (8ve)</h2>
+				<canvas id="canvas_3" width=400px height=400px class="canvas">ERROR LOADING CANVAS</canvas>
+				
+				<script type="text/javascript">
+					var canvas3 = document.getElementById("canvas_3");
+					var quickplot3 = new QuickPlot(canvas3);
+					var halfRange3 = 4;
+					var halfDomain3 = 10;
+					
+					quickplot3.setGraphDomain(-halfDomain3, halfDomain3);
+					quickplot3.setGraphRange(-halfRange3, halfRange3);
+					
+					quickplot3.setFunctionColor("#FF0000");
+					quickplot3.setBackgroundColor("#FFFFFFFF");
+					quickplot3.setFunction(function(x){return Math.sin(x)});
+					quickplot3.drawGraph();
+					
+					quickplot3.setFunctionColor("#0000FF");
+					quickplot3.setBackgroundColor("#FFFFFF00");
+					quickplot3.setFunction(function(x){return Math.sin(2*x)});
+					quickplot3.drawGraph();
+				</script>
+				<br>Pitch ratio of <b>1:2</b>
+				<br><small>For example, if we have A = 440hz, we have it's octave (also an A) at 880hz.</small>
+				
+			</section>
+			
+			<section>
+				<h6>Standard Intervals (Relative to C)</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>STs</th>
+							<th>Name(s)</th>
+							<th>Ratio</th>
+							<th>Note</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="fragment" data-fragment-index="2">
+							<td>0</td>
+							<td>Perfect Unison, Diminished 2nd</td>
+							<td>1:1</td>
+							<td>C</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="3">
+							<td>1</td>
+							<td>Semitone, Half Step, Minor 2nd, Augmented Unison</td>
+							<td>15:16</td>
+							<td>C#</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="4">
+							<td>2</td>
+							<td>Wholetone, Whole Step, Major 2nd, Diminished 3rd</td>
+							<td>8:9</td>
+							<td>D</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="5">
+							<td>3</td>
+							<td>Minor 3rd, Augmented 2nd</td>
+							<td>5:6</td>
+							<td>D#</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="6">
+							<td>4</td>
+							<td>Major 3rd, Diminished 4th</td>
+							<td>4:5</td>
+							<td>E</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="7">
+							<td>5</td>
+							<td>Perfect 4th, Augmented 3rd</td>
+							<td>3:4</td>
+							<td>F</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="8">
+							<td>6</td>
+							<td>Tritone, Augmented 4th, Diminished 5th</td>
+							<td>32:45</td>
+							<td>F#</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="9">
+							<td>7</td>
+							<td>Perfect 5th, Diminished 6th</td>
+							<td>2:3</td>
+							<td>G</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="10">
+							<td>8</td>
+							<td>Minor 6th, Augmented 5th, Diminished 7th</td>
+							<td>5:8</td>
+							<td>G#</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="11">
+							<td>9</td>
+							<td>Major 6th, Augmented 7th</td>
+							<td>3:5</td>
+							<td>A</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="12">
+							<td>10</td>
+							<td>Minor 7th, Diminished 6th</td>
+							<td>9:16</td>
+							<td>A#</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="13">
+							<td>11</td>
+							<td>Major 7th, Diminished 8ve</td>
+							<td>8:15</td>
+							<td>B</td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="1">
+							<td>12</td>
+							<td>Perfect 8ve, Augmented 7th</td>
+							<td>1:2</td>
+							<td>C</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</section>
+		
+		<!-- Consonance & Dissonance -->
+		<section id="consonance-and-dissonance">
+			<section>
+				<h1>Consonance & Dissonance</h1>
+			</section>
+			
+			<section>
+				<blockquote>Intervals which are <b>consonant</b> tend to sound harmonious, pleasant, and agreeable. <b>Dissonant</b> intervals tend to sound harsh, unpleasent, and unagreeable.</blockquote>
+			</section>
+			
+			<section>
+				<h3>But how do we know what is consonant and what is dissonant?</h3>
+				Your ears are actually great calculators.
+				The more "complex" the ratio (or specifically the denominator), the more dissonant.
+			</section>
+			
+			<section>
+				<h6>Standard Intervals (Relative to C)</h6>
+				<!-- List intervals with sound samples -->
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Ratio</th>
+							<th>Play</th>
+							<th>Note</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>Unison</td>
+							<td>1:1</td>
+							<td><button onclick="previewInterval(60, 60)">Play</button></td>
+							<td>C</td>
+						</tr>
+						
+						<tr>
+							<td>Minor 2nd</td>
+							<td>15:16</td>
+							<td><button onclick="previewInterval(60, 61)">Play</button></td>
+							<td>C#</td>
+						</tr>
+						
+						<tr>
+							<td>Major 2nd</td>
+							<td>8:9</td>
+							<td><button onclick="previewInterval(60, 62)">Play</button></td>
+							<td>D</td>
+						</tr>
+						
+						<tr>
+							<td>Minor 3rd</td>
+							<td>5:6</td>
+							<td><button onclick="previewInterval(60, 63)">Play</button></td>
+							<td>D#</td>
+						</tr>
+						
+						<tr>
+							<td>Major 3rd</td>
+							<td>4:5</td>
+							<td><button onclick="previewInterval(60, 64)">Play</button></td>
+							<td>E</td>
+						</tr>
+						
+						<tr>
+							<td>Perfect 4th</td>
+							<td>3:4</td>
+							<td><button onclick="previewInterval(60, 65)">Play</button></td>
+							<td>F</td>
+						</tr>
+						
+						<tr>
+							<td>Tritone</td>
+							<td>32:45</td>
+							<td><button onclick="previewInterval(60, 66)">Play</button></td>
+							<td>F#</td>
+						</tr>
+						
+						<tr>
+							<td>Perfect 5th</td>
+							<td>2:3</td>
+							<td><button onclick="previewInterval(60, 67)">Play</button></td>
+							<td>G</td>
+						</tr>
+						
+						<tr>
+							<td>Minor 6th</td>
+							<td>5:8</td>
+							<td><button onclick="previewInterval(60, 68)">Play</button></td>
+							<td>G#</td>
+						</tr>
+						
+						<tr>
+							<td>Major 6th</td>
+							<td>3:5</td>
+							<td><button onclick="previewInterval(60, 69)">Play</button></td>
+							<td>A</td>
+						</tr>
+						
+						<tr>
+							<td>Minor 7th</td>
+							<td>9:16</td>
+							<td><button onclick="previewInterval(60, 70)">Play</button></td>
+							<td>A#</td>
+						</tr>
+						
+						<tr>
+							<td>Major 7th</td>
+							<td>8:15</td>
+							<td><button onclick="previewInterval(60, 71)">Play</button></td>
+							<td>B</td>
+						</tr>
+						
+						<tr>
+							<td>Octave</td>
+							<td>1:2</td>
+							<td><button onclick="previewInterval(60, 72)">Play</button></td>
+							<td>C</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			
+			<section>
+				Context generally defines what is consonant/dissonant, but here's a general guideline:
+				<blockquote><b>Perfect consonances:</b> Unisons, Octaves, Perfect 4ths, Perfect 5ths</blockquote>
+				<blockquote><b>Imperfect consonances:</b> Major/Minor 3rds, Major/Minor 6ths</blockquote>
+				<blockquote><b>Sharp & soft dissonances:</b> Depends on musical context</blockquote>
+			</section>
+			
+		</section>
+		
+		<section id="chords-triads">
+			<section>
+				<h1>Chords (Triads)</h1>
+			</section>
+			
+			<section>
+				<blockquote>Simple definition: A <b>chord</b> is when 3 or more distinct notes are played simultaneously. We define chords by their root note, and the intervals relative to that root note, which give us the chord quality/chord type. A <b>chord triad</b>, or just triad, is a chord with 3 notes.</blockquote>
+			</section>
+			
+			<section>
+				<h6>Chord Triads (With C Roots)</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Name/Quality</th>
+							<th>Intervals</th>
+							<th>Notes</th>
+							<th>Play</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr class="fragment" data-fragment-index="1">
+							<td>Major (maj)</td>
+							<td>Root, Major 3rd, Perfect 5th</td>
+							<td>C, E, G</td>
+							<td><button onclick='previewChord(60, "Major")'>Play</button></td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="2">
+							<td>Minor (min)</td>
+							<td>Root, Minor 3rd, Perfect 5th</td>
+							<td>C, Eb, G</td>
+							<td><button onclick='previewChord(60, "Minor")'>Play</button></td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="3">
+							<td>Diminished (dim)</td>
+							<td>Root, Minor 3rd, Diminished 5th</td>
+							<td>C, Eb, Gb</td>
+							<td><button onclick='previewChord(60, "Diminished")'>Play</button></td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="4">
+							<td>Augmented (aug, +)</td>
+							<td>Root, Major 3rd, Augmented 5th</td>
+							<td>C, E, G#</td>
+							<td><button onclick='previewChord(60, "Augmented")'>Play</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			
+			<section>
+				<blockquote>There are many more types of chords, such as 7th chords, but these are simplest chords that you'll see out there.</blockquote>
+			</section>
+		</section>
+		
+		<!-- Scales/Keys -->
+		<section id="scales-keys">
+			<section>
+				<h1>Scales/Keys</h1>
+			</section>
+			
+			<section>
+				<blockquote>A <b>scale</b> is a sequence of notes, or intervals, based off a root note. The most common scales in "Western" music are heptatonic, which means they have 7 notes per octave. One way to define a scale is using a sequence of stacking whole and half steps.</blockquote>
+				<blockquote>A <b>key</b> is a set of notes, typically a scale, that act as the harmonic basis for a composition.</blockquote>
+			</section>
+			
+			<section>
+				<h6>Simple Scales (Starting at C)</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Intervals</th>
+							<th>Notes</th>
+							<th>Play</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr class="fragment" data-fragment-index="1">
+							<td>Major (Ionian mode)</td>
+							<td>W-W-H-W-W-W-H</td>
+							<td>C, D, E, F, G, A, B, C</td>
+							<td><button onclick='previewScale(60, "Major")'>Play</button></td>
+						</tr>
+						
+						<tr class="fragment" data-fragment-index="2">
+							<td>Natural Minor (Aeolian mode)</td>
+							<td>W-H-W-W-H-W-W</td>
+							<td>C, D, Eb, F, G, Ab, Bb, C</td>
+							<td><button onclick='previewScale(60, "Natural Minor")'>Play</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			
+			<section>
+				<blockquote>There are also the Harmonic Minor (W-H-W-W-H-m3/A2-H) and Melodic Minor (W-H-W-W-W-W-H). Some composers will use the melodic minor while ascending and the natural minor while descending.</blockquote>
+				<blockquote>There exist many more scales/keys/modes, even ones that are not heptatonic, that all have their own unique sound, but there are outside the scope of this talk.</blockquote>
+			</section>
+		</section>
+		
+		<!-- Diatonic Chords -->
+		<section id="diatonic-chords">
+			<section>
+				<h1>Diatonic Chords</h1>
+			</section>
+			
+			<section>
+				<blockquote>We say a chord is <b>diatonic</b> to a key if all the notes that comprise that chord are notes from that key. For example, a C major chord is: C, E, G and a C major key has the notes: C, D, E, F, G, A, B. This means that the C major chord is diatonic in the C major key.</blockquote>
+			</section>
+			
+			<section>
+				<blockquote>It is also useful when discussing keys to talk about the key or scale <b>degree</b>, which is just the nth note in that key. For example in the C major key, 1st = C, 2nd = D, 3rd = E, etc. We typically use Roman numerals to indicate this.</blockquote>
+			</section>
+			
+			<section>
+				Now, for both the major and minor key, if we start at each scale degree and use that note for the root of a chord, we can see what their diatonic chords are.<br>
+				We've already done this for the 1st of the C major key, which has a diatonic triad of the C major chord.
+			</section>
+			
+			<section>
+				<h6>Major Key/Ionian Mode (Starting at C)</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Degree</th>
+							<th>Root Note</th>
+							<th>Chord</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>I, C</td>
+							<td>C, E, G</td>
+							<td>C Major</td>
+						</tr>
+						
+						<tr>
+							<td>II, D</td>
+							<td>D, F, A</td>
+							<td>D Minor</td>
+						</tr>
+						
+						<tr>
+							<td>III, E</td>
+							<td>E, G, B</td>
+							<td>E Minor</td>
+						</tr>
+						
+						<tr>
+							<td>IV, F</td>
+							<td>F, A, C</td>
+							<td>F Major</td>
+						</tr>
+						
+						<tr>
+							<td>V, G</td>
+							<td>G, B, D</td>
+							<td>G Major</td>
+						</tr>
+						
+						<tr>
+							<td>VI, A</td>
+							<td>A, C, E</td>
+							<td>A Minor</td>
+						</tr>
+						
+						<tr>
+							<td>VII, B</td>
+							<td>B, D, F</td>
+							<td>B Diminished</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			
+			<section>
+				<h6>Minor Key/Aeolian Mode (Starting at C)</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Degree</th>
+							<th>Root Note</th>
+							<th>Chord</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>I, C</td>
+							<td>C, Eb, G</td>
+							<td>C Minor</td>
+						</tr>
+						
+						<tr>
+							<td>II, D</td>
+							<td>D, F, Ab</td>
+							<td>D Diminished</td>
+						</tr>
+						
+						<tr>
+							<td>III, Eb</td>
+							<td>Eb, G, Bb</td>
+							<td>Eb Major</td>
+						</tr>
+						
+						<tr>
+							<td>IV, F</td>
+							<td>F, Ab, C</td>
+							<td>F Minor</td>
+						</tr>
+						
+						<tr>
+							<td>V, G</td>
+							<td>G, Bb, D</td>
+							<td>G Minor</td>
+						</tr>
+						
+						<tr>
+							<td>VI, Ab</td>
+							<td>Ab, C, Eb</td>
+							<td>Ab Major</td>
+						</tr>
+						
+						<tr>
+							<td>VII, Bb</td>
+							<td>Bb, D, F</td>
+							<td>B Major</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			
+			<section>
+				Remember that our definitions are always relative to a root, so if we change the root, the chord quality of the scale degrees do not change, only the specific name of the notes being played.
+			</section>
+		</section>
+		
+		<!-- Functional Harmony & Chord Progressions -->
+		<section id="functional-harmony-and-chord-progressions">
+			<section>
+				<h1>Functional Harmony & Chord Progressions</h1>
+			</section>
+			
+			<section>
+				<blockquote>The <b>function</b> or a chord/scale degree is the relationship that it has to the tonal center (or root) of a scale/key, typically the first degree.</blockquote>
+				<blockquote>We call the first degree of a key the <b>tonic</b>.</blockquote>
+			</section>
+			
+			<section>
+				<blockquote>The tonic usually seen as the most stable chord in a key. As we move farther away from the tonic, we create dissonance and tension that wants to be resolved back to the tonic.</blockquote>
+				We can define functions for each scale degree of a key, but ultimately these are not set in stone.
+			</section>
+			
+			<section>
+				<h6>Common Functions of Scale Degrees</h6>
+				<table>
+					<thead>
+						<tr>
+							<th>Degree</th>
+							<th>Name/Function</th>
+							<th>Play</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td>I</td>
+							<td>Tonic, tonal center, home</td>
+							<td>
+								<button onclick='playChord(60, "Major")'>C Major</button>
+								<button onclick='playChord(60, "Minor")'>C Minor</button>
+							</td>
+						</tr>
+						<tr>
+							<td>II</td>
+							<td>Supertonic, relative of the subdominant</td>
+							<td>
+								<button onclick='playChord(62, "Minor")'>D Minor</button>
+								<button onclick='playChord(62, "Diminished")'>D Diminished</button>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>III</td>
+							<td>Mediant, relative of dominant, counterrelative of tonic</td>
+							<td>
+								<button onclick='playChord(64, "Minor")'>E Minor</button>
+								<button onclick='playChord(63, "Major")'>Eb Major</button>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>IV</td>
+							<td>Subdominant/Predominant</td>
+							<td>
+								<button onclick='playChord(65, "Major")'>F Major</button>
+								<button onclick='playChord(65, "Minor")'>F Minor</button>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>V</td>
+							<td>Dominant, tension, unstable</td>
+							<td>
+								<button onclick='playChord(67, "Major")'>G Major</button>
+								<button onclick='playChord(67, "Minor")'>G Minor</button>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>VI</td>
+							<td>Submediant, relative of the tonic</td>
+							<td>
+								<button onclick='playChord(69, "Minor")'>A Minor</button>
+								<button onclick='playChord(68, "Major")'>Ab Major</button>
+							</td>
+						</tr>
+						
+						<tr>
+							<td>VII</td>
+							<td>Leading Tone</td>
+							<td>
+								<button onclick='playChord(71, "Diminished")'>B Diminished</button>
+								<button onclick='playChord(71, "Major")'>B Major</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				],
-				// width: '100%',
-				// height: '100%',
-				margin: 0.05,
-				minScale: 0.2,
-				maxScale: 3.0
-			});
-		</script>
-	</body>
+			<section>
+				<blockquote>A <b>chord progression</b> is a sequence of chord that typically act as the harmonic foundation for a song.</blockquote>
+				Knowing what we now know, we can start to use chord progressions as a tool for analyzing and creating music.
+			</section>
+			
+			<section>
+				I - V - VI - IV<br>
+				<a href="https://www.youtube.com/watch?v=oOlDewpCfZQ">4 Chords by The Axis of Awesome</a>
+			</section>
+		</section>
+	</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info about config & dependencies:
+	// - https://github.com/hakimel/reveal.js#configuration
+	// - https://github.com/hakimel/reveal.js#dependencies
+	Reveal.initialize({
+		dependencies: [
+		{ src: 'plugin/markdown/marked.js' },
+		{ src: 'plugin/markdown/markdown.js' },
+		{ src: 'plugin/notes/notes.js', async: true },
+		{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		],
+		// width: '100%',
+		// height: '100%',
+		margin: 0.05,
+		minScale: 0.2,
+		maxScale: 3.0
+	});
+</script>
+</body>
 </html>
