@@ -1,7 +1,13 @@
 # music-theory-basics-tutorial
 
 ## Instructions
-To view the presentation slides, clone or download the repository. Open index.html in your favourite web browser. (Confirmed working for Google Chrome) Use the arrow keys to navigate the presentation.
+(Confirmed working for Google Chrome)
+
+Visit [here](http://centribo.github.io/Music-Theory-Basics-Tutorial).
+
+Alternatively, clone or download the repository. Open index.html in your favourite web browser.
+
+*Use the arrow keys to navigate the presentation.*
 
 ## Acknowledgements
 * [MIDI.js](https://github.com/mudcube/MIDI.js) by [Michael Deal](https://galactic.ink/) under [MIT](https://github.com/mudcube/MIDI.js/blob/master/LICENSE.txt)
